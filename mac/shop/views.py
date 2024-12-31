@@ -9,7 +9,11 @@ def index(request):
     print(products)
     n = len(products)
     nslides = n // 4 + ceil((n/4) - (n//4))
-    params = {'no_of_slides':nslides,'range':range(1,nslides), 'product': products}
+    # params = {'no_of_slides':nslides,'range':range(1,nslides), 'product': products}
+    allProds = [[products, range(1, len(products)) , nslides],     
+                [products, range(1, len(products)) , nslides]]
+     
+    params = {'allProds': allProds}
     return render(request, 'shop/index.html', params )
 def about(request):
     return render(request, 'shop/about.html')
