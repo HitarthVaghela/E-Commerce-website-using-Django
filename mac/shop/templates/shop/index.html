@@ -40,9 +40,9 @@
       <h1>Mens Fashion</h1>
       <div id="demo" class="carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
-          <li data-bs-target="#demo" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
           {% for i in range %}
-          <li data-bs-target="#demo" data-bs-slide-to="{{i}}"></li>
+          <li data-bs-target="#demo{{forloop.parentloop.counter}}" data-bs-slide-to="{{i}}"></li>
           {% endfor %}
 
         </ul>
@@ -87,11 +87,11 @@
     
   </div>
 <!--    left and right control-->
-    <a class="carousel-control-prev" href="#demo" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
     </a>
 
-    <a class="carousel-control-next" href="#demo" data-bs-slide="next">
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </a>
     {% endfor %}
