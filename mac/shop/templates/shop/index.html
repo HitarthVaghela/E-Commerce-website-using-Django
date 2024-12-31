@@ -36,13 +36,13 @@
     {% load static %}
     <div class="container">
       <!--    Slideshow -->
-        {% for product, range, nSlides in allProds %}
+        {% for product, range, nslides in allProds %}
       <h1>Mens Fashion</h1>
       <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
           {% for i in range %}
-          <li data-bs-target="#demo{{forloop.parentloop.counter}}" data-bs-slide-to="{{i}}"></li>
+          <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="{{  i }}"></li>
           {% endfor %}
 
         </ul>
