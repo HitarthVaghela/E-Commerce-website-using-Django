@@ -53,7 +53,7 @@
     <div class="container">
       <!--    Slideshow -->
         {% for product, range, nslides in allProds %}
-      <h1>{{product.0.category}}</h1>
+      <h1 class="my-4">{{product.0.category}}</h1>
       <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
