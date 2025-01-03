@@ -73,7 +73,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{product.0.product_name}}</h5>
                   <p class="card-text">{{product.0.desc}}</p>
-                  <a href="#" class="btn btn-primary">Add to cart</a>
+                  <button class="btn btn-primary cart">Add to cart</button>
                 </div>
              </div>
             </div>
@@ -86,7 +86,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{i.product_name}}</h5>
                   <p class="card-text">{{i.desc}}.</p>
-                  <a href="#" class="btn btn-primary">Add to cart</a>
+                  <button class="btn btn-primary cart">Add to cart</button>
                 </div>
              </div>
             </div>
@@ -116,10 +116,22 @@
   </div>
     {% endblock %}
     {% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      consolwe.log("work")
+      if (localStorage.getItem('cart') == null) {
+        console.log("work")
+        var cart = {};
+      } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+      }
+
+      $('.cart').click(function () {
+        console.log('clicked');
+      });
     </script>
+
     {% endblock %}
+    
 
  
 
