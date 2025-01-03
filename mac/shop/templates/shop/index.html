@@ -26,8 +26,8 @@
       background: blue;
       }
 
-      .carousel-control-prev,
-      .carousel-control-next{
+      body .carousel-control-prev,
+      body .carousel-control-next{
       top: auto;
       bottom: auto;
       }
@@ -114,6 +114,11 @@
     {% endfor %}
 
   </div>
+    {% endblock %}
+    {% block js %}
+    <script>
+      consolwe.log("work")
+    </script>
     {% endblock %}
 
  
