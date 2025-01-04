@@ -23,7 +23,7 @@
 
       body .carousel-control-prev-icon,
       body .carousel-control-next-icon{
-      background: blue;
+      <!-- background: blue; -->
       }
 
       body .carousel-control-prev,
@@ -38,14 +38,16 @@
       }
 
       .carousel-control-prev-icon {
-        background: red;
+        background-color: blue;
         position: absolute;
         bottom: 20px; /* Adjust as needed */
         left: 50%;
         transform: translateX(-50%);
         z-index: 1;
       }
-      
+      .carousel-control-next-icon {
+        background-color: blue;
+      }
 
     {% endblock %}
     {% block body %}
@@ -55,7 +57,8 @@
       <!--    Slideshow -->
         {% for product, range, nslides in allProds %}
       <h1 class="my-5">{{product.0.category}}</h1>
-      <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+      <div id="row">
+      <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active"></li>
             {% for i in range %}
@@ -102,6 +105,7 @@
     <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </a>
+    </div>
     {% endfor %}
 
   </div>
@@ -114,6 +118,8 @@
         var cart = {};
       } else {
         cart = JSON.parse(localStorage.getItem('cart'));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
+
       }
 
       $('.cart').click(function () {
