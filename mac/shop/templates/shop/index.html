@@ -134,13 +134,16 @@
         console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
       });
-      
-  const popoverTrigger = document.getElementById('popcart');
-  if (popoverTrigger) {
-    new bootstrap.Popover(popoverTrigger, {
-      placement: 'bottom',
+
+      $(document).ready(function () {
+      $('#popcart').popover({
+        html: true, 
+        placement: 'bottom',
+        content: '<h5>Cart</h5>',
+      });
     });
-  }
+
+  document.getElementById("popcart").setAttribute('data-content', '<h5> Cart </h5>');
     </script>
 
     {% endblock %}
