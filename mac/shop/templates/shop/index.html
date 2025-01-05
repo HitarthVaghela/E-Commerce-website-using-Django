@@ -134,6 +134,13 @@
         console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
       });
+      
+  const popoverTrigger = document.getElementById('popcart');
+  if (popoverTrigger) {
+    new bootstrap.Popover(popoverTrigger, {
+      placement: 'bottom',
+    });
+  }
     </script>
 
     {% endblock %}
