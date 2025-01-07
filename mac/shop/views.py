@@ -36,7 +36,7 @@ def search(request):
 def productView(request, myid):
     #Fetch product using id
     product = Product.objects.filter(id=myid)
-    return render(request, 'shop/prodView.html',{'product':product})
+    return render(request, 'shop/prodView.html',{'product':product[0]})
 
 def checkout(request):
     return render(request, 'shop/checkout.html') 
