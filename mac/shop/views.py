@@ -23,16 +23,24 @@ def index(request):
     return render(request, 'shop/index.html', params )
 def about(request):
     return render(request, 'shop/about.html')
+
 def contact(request):
     return render(request, 'shop/contact.html')
+
 def tracker(request):
     return render(request, 'shop/tracker.html')
+
 def search(request):
     return render(request, 'shop/search.html')
-def productView(request):
-    return render(request, 'shop/prodView.html')
+
+def productView(request, myid):
+    #Fetch product using id
+    product = Product.objects.filter(id=myid)
+    return render(request, 'shop/prodView.html',{'product':product})
+
 def checkout(request):
     return render(request, 'shop/checkout.html') 
+
 def productlist(request):
     context = {'product':Product.objects.all()}
     return render(request, 'shop/products.html',context)
