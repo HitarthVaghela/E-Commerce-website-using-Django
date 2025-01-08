@@ -13,5 +13,13 @@ class Product(models.Model):
     pub_date = models.DateField()
     image = models.ImageField(upload_to="shop/images", default="")
 
+class Contact(models.Model):
+    product_id = models.AutoField
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50 default="")
+    phone = models.CharField(max_length=50 default="")
+    desc = models.CharField(max_length=50)
+
+
     def __str__(self):
         return self.product_name
