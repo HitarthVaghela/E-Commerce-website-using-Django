@@ -75,12 +75,14 @@
             {% for i in product %}
 
             <div class="col-xs-3 col-sm-3 col-md-3">
-              <div class="card" style="width: 18rem;">
+              <div class="card align-items-center" style="width: 18rem;">
                 <img src='/media/{{i.image}}' class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{i.product_name}}</h5>
                   <p class="card-text">{{i.desc |slice:"0:53"}}...</p>
+                  <span id="divpr{{i.id}}">
                   <button id ="pr{{i.id }}" class="btn btn-primary cart">Add to cart</button>
+                  </span>
                   <a href="/shop/products/{{i.id}}">
                   <button id ="qv{{i.id }}" class="btn btn-primary cart">Quick view</button></a>
 
@@ -113,9 +115,11 @@
 
   </div>
     {% endblock %}
-    <!-- {% block js %}
+    {% block js %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
+      // Find out the cart items from localStorage
       if (localStorage.getItem('cart') == null) {
         console.log("work")
         var cart = {};
@@ -124,7 +128,7 @@
         document.getElementById('cart').innerHTML = Object.keys(cart).length;
 
       }
-
+      // If the to cart button is clicked.
       $('.cart').click(function () {
         console.log('clicked');
         var idstr = this.id.toString();
@@ -134,10 +138,11 @@
         else{
           cart[idstr] = 1;
         }
-        console.log(cart);
+        // console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
       });
 
+      // Popover to cart
       $(document).ready(function () {
       $('#popcart').popover({
         html: true, 
@@ -147,9 +152,21 @@
     });
 
   document.getElementById("popcart").setAttribute('data-content', '<h5> Cart </h5>');
+
+  function updateCart(cart) {
+  for (var item in cart) {
+    if (cart.hasOwnProperty(item)) { // Check if the property belongs to `cart`
+      document.getElementById('div' + item).innerHTML = 
+        "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> " +
+        "<span id='val" + item + "'>" + cart[item] + "</span> " +
+        "<button id='plus" + item + "' class='btn btn-primary plus'>+</button>";
+    }
+  }
+}
+
     </script>
 
-    {% endblock %} -->
+    {% endblock %}
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
