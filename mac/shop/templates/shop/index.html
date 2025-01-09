@@ -118,7 +118,6 @@
     {% block js %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-
       // Find out the cart items from localStorage
       if (localStorage.getItem('cart') == null) {
         console.log("work")
@@ -126,6 +125,8 @@
       } else {
         cart = JSON.parse(localStorage.getItem('cart'));
         document.getElementById('cart').innerHTML = Object.keys(cart).length;
+      updateCart(cart);
+
 
       }
       // If the to cart button is clicked.
