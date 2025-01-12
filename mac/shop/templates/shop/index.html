@@ -142,33 +142,56 @@
       });
 
       // Popover to cart
-      $(document).ready(function () {
-      $('#popcart').popover({
-        html: true, 
-        placement: 'bottom',
-        content: '<h5>Cart</h5>',
-      });
-    });
+    //   $(document).ready(function () {
+    //   $('#popcart').popover({
+    //     html: true, 
+    //     placement: 'bottom',
+    //     content: '<h5>Cart</h5>',
+    //   });
+    // });
 
-  document.getElementById("popcart").setAttribute('data-content', '<h5> Cart </h5>');
-  // $('#popcart').popover();
-  updatePopover(cart);
-  function updatePopover(){
-    var popStr = "";
-    popStr =  popStr + "<h5>Cart for your items in shopping cart </h5> <div class='mx-2 my-2'>";
-    var i = 1;
-    for (var item in cart){
-      popStr = popStr + "<b>" + i + "</b>.";
-      popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0,19) + "... Qty: " + cart[item] + "</br>";
-      i = i + 1;
-    }
-    popStr = popStr + "</div>";
-    document.getElementById('popcart').setAttribute('data-content', popStr);
-    // $('#popcart').popover('show');
+ // Initialize Bootstrap Popover
+const popcart = document.getElementById('popcart');
+if (popcart) {
+  const popover = new bootstrap.Popover(popcart, {
+    trigger: 'focus',
+    html: true,
+    content: '<h5> Cartsss </h5>'
+  });
+}
 
+// Update popover content dynamically
+function updatePopover(cart) {
+  let popStr = "<h5>Cart for your items in shopping cart</h5> <div class='mx-2 my-2'>";
+  let i = 1;
+  for (const item in cart) {
+    popStr += `<b>${i}</b>. ${document.getElementById('name' + item).innerHTML.slice(0, 19)}... Qty: ${cart[item]}<br>`;
+    i++;
   }
+  popStr += "</div>";
+
+  if (popcart) {
+    popover.setContent({ content: popStr });
+  }
+}
+
+
+  // function updatePopover(){
+  //   var popStr = "";
+  //   popStr =  popStr + "<h5>Cart for your items in shopping cart </h5> <div class='mx-2 my-2'>";
+  //   var i = 1;
+  //   for (var item in cart){
+  //     popStr = popStr + "<b>" + i + "</b>.";
+  //     popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0,19) + "... Qty: " + cart[item] + "</br>";
+  //     i = i + 1;
+  //   }
+  //   popStr = popStr + "</div>";
+  //   document.getElementById('popcart').setAttribute('data-content', popStr);
+  //   // $('#popcart').popover('show');
+
+  // }
   function updateCart(cart) {
-    var sum = 0;
+  var sum = 0;
   for (var item in cart) {
     if (cart.hasOwnProperty(item)) { // Check if the property belongs to `cart`
       sum += cart[item];
