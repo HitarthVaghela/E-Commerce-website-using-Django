@@ -129,7 +129,8 @@
 
       }
       // If the to cart button is clicked.
-      $('.cart').click(function () {
+      // $('.cart').click(function () {
+      $('.divpr').on('click', 'button.cart', function(){
         var idstr = this.id.toString();
         if (cart[idstr] != undefined){
           cart[idstr] = cart[idstr] + 1;
