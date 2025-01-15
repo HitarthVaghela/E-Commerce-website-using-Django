@@ -125,21 +125,21 @@
         cart = JSON.parse(localStorage.getItem('cart'));
         document.getElementById('cart').innerHTML = Object.keys(cart).length;
       updateCart(cart);
-
-
       }
+
       // If the to cart button is clicked.
       // $('.cart').click(function () {
-      $('.divpr').on('click', 'button.cart', function(){
-        var idstr = this.id.toString();
-        if (cart[idstr] != undefined){
-          qty = cart[idstr][0] + 1;
-        }
-        else{
-          cart[idstr] = 1;
-          name = document.getElementById('name' + idstr).innerHTML;
-          cart[item] = [qty,name];
-        }        
+        $('.divpr').on('click', 'button.cart', function() {
+          var idstr = this.id.toString();
+          if (cart[idstr] != undefined) {
+              qty = cart[idstr][0] + 1;
+              
+          } else {
+              qty = 1;
+              name = document.getElementById('name'+idstr).innerHTML
+              cart[idstr] = [qty, name];
+          }
+          updateCart(cart);
       });
 
       // Popover to cart
@@ -209,12 +209,6 @@ $('.divpr').on("click", "button.plus", function() {
     </script>
 
     {% endblock %}
-
-    {% block js %} 
-    
-    
-    {% endblock %}
-
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
