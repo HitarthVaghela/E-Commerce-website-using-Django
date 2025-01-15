@@ -137,7 +137,7 @@
         }
         else{
           cart[idstr] = 1;
-          name = "My Item";
+          name = document.getElementById('name' + idstr).innerHTML;
           cart[item] = [qty,name];
         }        
       });
