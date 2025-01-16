@@ -58,6 +58,9 @@ def checkout(request):
 
         order = Orders(name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone)
         order.save()
+        thank = True
+        id = order.order_id
+        return render(request, 'shop/checkout.html', {'thank':thank, 'id': id}) 
     return render(request, 'shop/checkout.html') 
 
 def productlist(request):
