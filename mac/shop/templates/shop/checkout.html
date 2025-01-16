@@ -11,7 +11,8 @@
   </div>
   <div class="col my-4">
     <h2>Step 2 Enter address and Other details</h2>
-    <form class="row g-3">
+    <form class="row g-3" method="post" action="/shop/checkout">{% csrf_token%}
+      <input type="hidden" name="itemsJson" id="itemsJson">
         <div class="col-md-6">
           <label for="inputname" class="form-label">Name</label>
           <input type="name" class="form-control" id="inputname" placeholder="Name">
