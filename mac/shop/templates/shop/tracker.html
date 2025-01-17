@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="col my-4" >
-    <h2>Step-1 Awesome cart Express checkout - Review Your cart items</h2>
+    <h2>Awesome cart Express Tracker - Track your orders</h2>
     <div>
       <ul class="list-group list-group-numbered"  id="items">
     
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="col my-4">
-    <h2>Step 2 Enter address and Other details</h2>
+    <h2>Enter address and Other details</h2>
     <form class="row g-3" method="post" action="/shop/checkout/">{% csrf_token%}
       <input type="hidden" name="itemsJson" id="itemsJson">
         <div class="col-md-6">
