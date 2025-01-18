@@ -1,15 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product, Contact, Orders
+from .models import Product, Contact, Orders, OrderUpdate
 from math import ceil
 
 # Create your views here.
 def index(request):
-    # products = Product.objects.all()
-    # print(products)
-    # n = len(products)
-    # nslides = n // 4 + ceil((n/4) - (n//4))
-    # params = {'no_of_slides':nslides,'range':range(1,nslides), 'product': products}
     allProds = []
     catprods = Product.objects.values('category','id')
     cat = {item['category'] for item in catprods }
@@ -21,6 +16,7 @@ def index(request):
      
     params = {'allProds': allProds}
     return render(request, 'shop/index.html', params )
+
 def about(request):
     return render(request, 'shop/about.html')
 
@@ -59,6 +55,8 @@ def checkout(request):
 
         order = Orders(items_json=items_json, name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone)
         order.save()
+        update = OrderUpdate(order_id = order.order_id, update_desc ="The order has been placed")
+        update.save()
         thank = True
         id = order.order_id
         return render(request, 'shop/checkout.html', {'thank':thank, 'id': id}) 
