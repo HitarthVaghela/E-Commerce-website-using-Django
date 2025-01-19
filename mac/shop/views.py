@@ -47,6 +47,8 @@ def tracker(request):
                     return HttpResponse(response)
             else:
                 pass
+        except Exception as e:
+            pass
     return render(request, 'shop/tracker.html')
 
 def search(request):
