@@ -7,7 +7,7 @@
       <input type="hidden" name="itemsJson" id="itemsJson">
         <div class="col-md-6">
           <label for="inputname" class="form-label">Order Id</label>
-          <input type="text" class="form-control" id="OrderId" name="OrderId" placeholder="Order Id">
+          <input type="text" class="form-control" id="orderId" name="orderId" placeholder="Order Id">
         </div>
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Email</label>
@@ -33,7 +33,7 @@
 
 <script>
 $('#trackerForm').submit(function(event){
-  
+
   $('#items').empty();
 
   var formData = {
