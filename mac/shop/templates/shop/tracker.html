@@ -3,7 +3,7 @@
 <div class="container">
   <div class="col my-4" >
     <h2>Enter your Order Id and Email address to track your orders</h2>
-    <form class="row g-3" method="post" action="/shop/checkout/">{% csrf_token%}
+    <form class="row g-3" method="post" action="#" id="trackerForm">{% csrf_token%}
       <input type="hidden" name="itemsJson" id="itemsJson">
         <div class="col-md-6">
           <label for="inputname" class="form-label">Order Id</label>
@@ -32,7 +32,24 @@
 {% block js %} 
 
 <script>
+$('#trackerForm').submit(function(event)){
+  $('#items').empty();
 
+  var formData = {
+    'orderId': $('input[name=orderId]').val(),
+    'email': $('input[name=email]').val(),
+    'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+  }
+  $.ajax({
+
+    type:'POST',
+    url: '/shop/tracker/',
+    encode: true
+  })
+  .done(function(data){
+    
+  })
+}
 </script>
 
 {% endblock %}
