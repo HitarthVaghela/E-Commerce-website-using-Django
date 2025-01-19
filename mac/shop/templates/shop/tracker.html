@@ -32,7 +32,7 @@
 {% block js %} 
 
 <script>
-$('#trackerForm').submit(function(event)){
+$('#trackerForm').submit(function(event){
   $('#items').empty();
 
   var formData = {
@@ -47,9 +47,10 @@ $('#trackerForm').submit(function(event)){
     encode: true
   })
   .done(function(data){
-    
-  })
-}
+
+  });
+  event.preventDefault();
+})
 </script>
 
 {% endblock %}
