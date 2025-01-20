@@ -29,7 +29,6 @@
     <h2>Your Order Details</h2>
     <div class="my-4">
       <ul class="list-group list-group-numbered"  id="citems">
-        Enter your order id and Email and click Track Order to find details about your order.
       </ul>
     </div>
   </div>
@@ -77,12 +76,11 @@ $('#trackerForm').submit(function(event){
         </li>`;
       $('#items').append(mystr);
     }
-    cart = data[1]; 
+    cart = JSON.parse(data[1]); 
     for (let item in cart) {
           let name = cart[item][1];
           let qty = cart[item][0];
           let itemPrice = cart[item][2];
-          sum += qty;
           totalPrice += qty * itemPrice;
           let mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                           ${name}
