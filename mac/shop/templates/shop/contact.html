@@ -29,3 +29,14 @@
 </div>
 
 {% endblock %}
+
+{% block js %}
+<script>
+
+{% if thank %}
+alert('Thanks for Contacting us.');
+document.location = "/shop/contact";
+{% endif %}
+
+</script>
+{% endblock %}
