@@ -32,7 +32,7 @@ def contact(request):
         contact.save()
         thank = True
         
-    return render(request, 'shop/contact.html', {'thank' thank})
+    return render(request, 'shop/contact.html', {'thank': thank})
 
 def tracker(request):
     if request.method == "POST":
@@ -79,7 +79,7 @@ def checkout(request):
         update.save()
         thank = True
         id = order.order_id
-        return render(request, 'shop/checkout.html', {'thank':thank, 'id': id}) 
+        return render(request, 'shop/checkout.html', {'thank': thank, 'id': id}) 
     return render(request, 'shop/checkout.html') 
 
 def productlist(request):
