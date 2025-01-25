@@ -10,11 +10,8 @@ class Blogpost(models.Model):
     chead1 = models.CharField(max_length=500, default="")
     head2 = models.CharField(max_length=500, default="")
     chead2 = models.CharField(max_length=500, default="")
-    subcategory = models.CharField(max_length=50, default="")
-    price = models.IntegerField(default=0)
-    desc = models.CharField(max_length=300)
     pub_date = models.DateField()
-    thumbnail = models.ImageField(upload_to="shop/images", default="")
+    thumbnail = models.ImageField(upload_to="basic/images", default="")
 
     def __str__(self):
         return self.title
