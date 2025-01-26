@@ -8,8 +8,7 @@
           <h3 class="pb-4 mb-4 fst-italic border-bottom">
             {{post.title}}
           </h3>
-    
-          <article class="blog-post">
+          
             <h2 class="display-5 link-body-emphasis mb-1">{{post.heading0}}</h2>
             <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
     
@@ -17,11 +16,10 @@
             
             <h2>{{post.head1}}</h2>
             <p>{{post.chead1}}</p>
-          </article>
 
           <h2>{{post.head2}}</h2>
             <p>{{post.chead2}}</p>
-          </article>
+            <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/blogpost/{{post.post_id}}" data-width="" data-numposts="5"></div>
 
     
         </div>
