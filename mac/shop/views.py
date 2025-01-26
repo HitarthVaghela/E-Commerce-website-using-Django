@@ -18,6 +18,24 @@ def index(request):
     params = {'allProds': allProds}
     return render(request, 'shop/index.html', params )
 
+def searchMatch(query, item):
+    return True
+
+def search(request):
+    query = request.GET.get('search')
+    allProds = []
+    catprods = Product.objects.values('category','id')
+    cat = {item['category'] for item in catprods }
+    for cat in cat:
+        prodtemp = Product.objects.filter(category=cat)
+        prod = [item for item in prodtemp if searchMatch(query, item.desc)]
+        n = len(prod)
+        nslides = n // 4 + ceil((n/4) - (n//4))
+        allProds.append([prod, range(1,nslides), nslides])
+     
+    params = {'allProds': allProds}
+    return render(request, 'shop/index.html', params )
+
 def about(request):
     return render(request, 'shop/about.html')
 
@@ -54,9 +72,6 @@ def tracker(request):
             return HttpResponse('{}')
     return render(request, 'shop/tracker.html')
 
-def search(request):
-    return render(request, 'shop/search.html')
-
 def productView(request, myid):
     #Fetch product using id
     product = Product.objects.filter(id=myid)
@@ -66,6 +81,7 @@ def checkout(request):
     if request.method == "POST":
         items_json = request.POST.get('itemsJson', '')
         name = request.POST.get('name', '')
+        amount = request.POST.get('amount', '')
         email = request.POST.get('email', '')
         address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
         city = request.POST.get('city', '')
@@ -73,7 +89,7 @@ def checkout(request):
         zip_code = request.POST.get('zip_code', '')
         phone = request.POST.get('phone', '')
 
-        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone)
+        order = Orders(items_json=items_json, name=name, email=email, address=address, city=city, state=state, zip_code=zip_code, phone=phone, amount=amount)
         order.save()
         update = OrderUpdate(order_id = order.order_id, update_desc ="The order has been placed")
         update.save()
