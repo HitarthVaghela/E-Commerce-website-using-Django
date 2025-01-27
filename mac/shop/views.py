@@ -19,7 +19,10 @@ def index(request):
     return render(request, 'shop/index.html', params )
 
 def searchMatch(query, item):
-    return True
+    if query in item.desc.lower() or query in item.product_name.lower() or query in item.category.lower():
+        return True
+    else:
+        return False
 
 def search(request):
     query = request.GET.get('search')
@@ -29,11 +32,15 @@ def search(request):
     for cat in cat:
         prodtemp = Product.objects.filter(category=cat)
         prod = [item for item in prodtemp if searchMatch(query, item.desc)]
+
         n = len(prod)
         nslides = n // 4 + ceil((n/4) - (n//4))
-        allProds.append([prod, range(1,nslides), nslides])
+        if len(prod) != 0:
+            allProds.append([prod, range(1,nslides), nslides])
      
     params = {'allProds': allProds}
+    if len(allProds == 0) or len<4:
+        params = {'msg':"Please enter relevant search"}
     return render(request, 'shop/index.html', params )
 
 def about(request):
