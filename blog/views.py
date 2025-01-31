@@ -5,4 +5,4 @@ def blogHome(request):
     return HttpResponse('BlogHome')
 
 def blogPost(request, slug):
-    return HttpResponse(f'blogPost:' {slug})
+    return HttpResponse(f'blogPost: {slug}')
