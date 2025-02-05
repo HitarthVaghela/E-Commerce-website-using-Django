@@ -6,8 +6,11 @@ def home(request):
 
 def about(request):
     return render(request, 'home/about.html')
-    # return HttpResponse('about')
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        msg = request.POST['content']
     return render(request, 'home/contact.html')
-    # return HttpResponse('contact')
